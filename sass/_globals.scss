@@ -1,0 +1,56 @@
+
+body{
+    background-color: $main-color;
+    @include mp0;
+}
+.input-container{
+    @include container-styles;
+    width:29.5%;
+    background-image:url("images/input-background.jpeg");
+    .input{
+        @include input-output;
+        @include border;
+    }
+    .insert{
+        @include border;
+        color:$text-color;
+        background-color: $main-color;
+        height: 2em;
+        width:45%;
+    }
+    
+
+}
+.shape-container{
+    @include container-styles;
+    background-image:url("images/container-background.png");
+    width:50%;
+    
+
+}
+.side-panel{
+    @include container-styles;
+    background-image:url("images/input-background.jpeg");
+    width:19.5%;
+    .output{
+        @include input-output;
+        @include border;
+    }
+
+}
+h1{
+    color:$text-color;
+    text-align: center;
+}
+#triangle{
+    @include triangle;
+}
+#square{
+    @include square;
+}
+#cirlce{
+    @include circle;
+}
+#rectangle{
+    @include rectangle;
+}

@@ -1,0 +1,49 @@
+@mixin mp0{
+    margin:0 auto;
+    padding:0;
+}
+@mixin container-styles{
+    color:$text-color;
+    background-size: cover;
+    border:solid  $main-color thin;
+    height:600px;
+    float: left;
+    @include mp0;
+}
+
+@mixin square {
+	width: 100px;
+	height: 100px;
+	background: $square-color;
+}
+@mixin rectangle{
+    width: 200px;
+    height: 100px;
+    background: $rectangle-color;
+}
+@mixin circle {
+	width: 100px;
+	height: 100px;
+	background:$circle-color;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+}
+@mixin triangle{
+	width: 0;
+	height: 0;
+	border-top: 100px solid $triangle-color;
+	border-left: 100px solid transparent;
+
+}
+@mixin border{
+    border:solid thin $text-color;
+    border-radius: 10px;
+}
+@mixin input-output{
+    display: block;
+    width: 80%;
+    height: 2em;
+    margin:.5em;
+    background-color: $main-color;
+}

@@ -1,0 +1,90 @@
+body {
+  background-color: lavenderblush;
+  margin: 0 auto;
+  padding: 0; }
+
+.input-container {
+  color: magenta;
+  background-size: cover;
+  border: solid lavenderblush thin;
+  height: 600px;
+  float: left;
+  margin: 0 auto;
+  padding: 0;
+  width: 29.5%;
+  background-image: url("images/input-background.jpeg"); }
+  .input-container .input {
+    display: block;
+    width: 80%;
+    height: 2em;
+    margin: .5em;
+    background-color: lavenderblush;
+    border: solid thin magenta;
+    border-radius: 10px; }
+  .input-container .insert {
+    border: solid thin magenta;
+    border-radius: 10px;
+    color: magenta;
+    background-color: lavenderblush;
+    height: 2em;
+    width: 45%; }
+
+.shape-container {
+  color: magenta;
+  background-size: cover;
+  border: solid lavenderblush thin;
+  height: 600px;
+  float: left;
+  margin: 0 auto;
+  padding: 0;
+  background-image: url("images/container-background.png");
+  width: 50%; }
+
+.side-panel {
+  color: magenta;
+  background-size: cover;
+  border: solid lavenderblush thin;
+  height: 600px;
+  float: left;
+  margin: 0 auto;
+  padding: 0;
+  background-image: url("images/input-background.jpeg");
+  width: 19.5%; }
+  .side-panel .output {
+    display: block;
+    width: 80%;
+    height: 2em;
+    margin: .5em;
+    background-color: lavenderblush;
+    border: solid thin magenta;
+    border-radius: 10px; }
+
+h1 {
+  color: magenta;
+  text-align: center; }
+
+#triangle {
+  width: 0;
+  height: 0;
+  border-top: 100px solid yellow;
+  border-left: 100px solid transparent; }
+
+#square {
+  width: 100px;
+  height: 100px;
+  background: red; }
+
+#cirlce {
+  width: 100px;
+  height: 100px;
+  background: purple;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px; }
+
+#rectangle {
+  width: 200px;
+  height: 100px;
+  background: green; }
+
+/*# sourceMappingURL=styles.css.map */
