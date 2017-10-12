@@ -1,7 +1,9 @@
 
 body{
-    background-color: $main-color;
+    background-image:url("images/output-background.jpg");
     @include mp0;
+    background-size:cover;
+
 }
 .input-container{
     @include container-styles;
@@ -13,10 +15,11 @@ body{
     }
     .insert{
         @include border;
-        color:$text-color;
-        background-color: $main-color;
+        color:$main-color;
+        background-color: $text-color;
         height: 2em;
         width:45%;
+        margin: 0 20% auto;
     }
     
 

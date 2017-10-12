@@ -1,7 +1,8 @@
 body {
-  background-color: lavenderblush;
+  background-image: url("images/output-background.jpg");
   margin: 0 auto;
-  padding: 0; }
+  padding: 0;
+  background-size: cover; }
 
 .input-container {
   color: magenta;
@@ -24,10 +25,11 @@ body {
   .input-container .insert {
     border: solid thin magenta;
     border-radius: 10px;
-    color: magenta;
-    background-color: lavenderblush;
+    color: lavenderblush;
+    background-color: magenta;
     height: 2em;
-    width: 45%; }
+    width: 45%;
+    margin: 0 20% auto; }
 
 .shape-container {
   color: magenta;
