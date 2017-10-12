@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shape of You!</title>
+    <link href="styles.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+
+    <h1> Shape of You!</h1>
+    <!-- Shape Drawer-->
+    <div class="input-container">
+        <!--rectangles-->
+        <h2 class="shapes"> Rectangle</h2>
+        <input type="text" class="input rectangle">
+        <input type="text" class="input rectangle">
+        <button class="insert" id="rectangle-button"></button>
+        <!--square-->
+        <h2 class="shapes">Square</h2>
+        <input type="text" class="input square">
+        <button class="insert" id="square-button"></button>
+        <!--Circle-->
+        <h2 class="shapes">Circle</h2>
+        <input type="text" class="input" id="circle">
+        <button class="insert" id="cirlce-button"></button>
+        <!--triangle-->
+        <h2 class="shapes">Triangle</h2>
+        <input type="text" class="input">
+        <button class="insert" id="triangle-button"></button>
+
+    </div>
+    <!--shape container-->
+    <div class="shape-container">
+
+    </div>
+    <!--side panel display-->
+    <div class="side-panel">
+        <span class="output" id="shape-name">Shape Name:</span>
+        <span class="output" id="width"> Width:</span>
+        <span class="output" id="height"> Height:</span>
+        <span class="output" id="radius"> Radius:</span>
+        <span class="output" id="area"> Area:</span>
+        <span class="output" id="perimeter"> Perimeter:</span>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
