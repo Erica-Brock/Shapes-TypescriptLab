@@ -1,6 +1,5 @@
 //getting all buttons from the document
 document.addEventListener("DOMContentLoaded", function () {
-    const myButtons: NodeListOf<HTMLButtonElement> = document.getElementsByTagName('button');
     const recBtn: HTMLElement = document.getElementById("rectangle-button");
     const squareBtn: HTMLElement = document.getElementById("square-button");
     const cirBtn: HTMLElement = document.getElementById("circle-button");
@@ -8,10 +7,10 @@ document.addEventListener("DOMContentLoaded", function () {
     //getting all inputs from the document
     const myInputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
     const recInfo1: HTMLInputElement = (<HTMLInputElement>document.getElementById("rec-height"));
-    const recInfo2: HTMLInputElement = (<HTMLInputElement>document.getElementById("rec-width"))
-    const squareInfo: HTMLInputElement = (<HTMLInputElement>document.getElementById("square-length"))
-    const cirInfo: HTMLInputElement = (<HTMLInputElement>document.getElementById("circle-radius"))
-    const triInfo: HTMLInputElement = (<HTMLInputElement>document.getElementById("tri-height"))
+    const recInfo2: HTMLInputElement = (<HTMLInputElement>document.getElementById("rec-width"));
+    const squareInfo: HTMLInputElement = (<HTMLInputElement>document.getElementById("square-length"));
+    const cirInfo: HTMLInputElement = (<HTMLInputElement>document.getElementById("circle-radius"));
+    const triInfo: HTMLInputElement = (<HTMLInputElement>document.getElementById("tri-height"));
     //getting all outputs from the document
     const shapeName: string = document.getElementById("shape-name").innerHTML;
     const width: string = document.getElementById("width").innerHTML;
@@ -46,6 +45,9 @@ document.addEventListener("DOMContentLoaded", function () {
         draw(id):void{ 
             shapeContainer.appendChild(this.div);
             this.div.id=id;  
+            let position= randomPosition();
+            this.div.style.top=`${position.top}px`
+            this.div.style.left=`${position.right}px`
         }
     }
      //creating square class
@@ -108,3 +110,18 @@ document.addEventListener("DOMContentLoaded", function () {
             tri.draw("triangle");
         })
 })
+//function randomPosition(){
+//    let num=randomNum(500,1);
+  //  let left= `${num}px`
+    //let top= `${num}px`
+//}
+function randomNum(max,min){
+    return Math.random() * (max - min) + min;
+}
+
+function randomPosition() {
+    return {
+        top: randomNum(500,1),
+        right: randomNum(300,1)
+    };
+}

@@ -10,7 +10,6 @@ var __extends = (this && this.__extends) || (function () {
 })();
 //getting all buttons from the document
 document.addEventListener("DOMContentLoaded", function () {
-    var myButtons = document.getElementsByTagName('button');
     var recBtn = document.getElementById("rectangle-button");
     var squareBtn = document.getElementById("square-button");
     var cirBtn = document.getElementById("circle-button");
@@ -44,6 +43,9 @@ document.addEventListener("DOMContentLoaded", function () {
         Shape.prototype.draw = function (id) {
             shapeContainer.appendChild(this.div);
             this.div.id = id;
+            var position = randomPosition();
+            this.div.style.top = position.top + "px";
+            this.div.style.left = position.right + "px";
         };
         return Shape;
     }());
@@ -118,3 +120,17 @@ document.addEventListener("DOMContentLoaded", function () {
         tri.draw("triangle");
     });
 });
+//function randomPosition(){
+//    let num=randomNum(500,1);
+//  let left= `${num}px`
+//let top= `${num}px`
+//}
+function randomNum(max, min) {
+    return Math.random() * (max - min) + min;
+}
+function randomPosition() {
+    return {
+        top: randomNum(500, 1),
+        right: randomNum(300, 1)
+    };
+}
