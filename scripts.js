@@ -8,8 +8,18 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-//getting all buttons from the document
+//generating a random position to append shapes to shape-container
+function randomNum(max, min) {
+    return Math.random() * (max - min) + min;
+}
+function randomPosition() {
+    return {
+        top: randomNum(500, 1),
+        left: randomNum(500, 1)
+    };
+}
 document.addEventListener("DOMContentLoaded", function () {
+    //getting all buttons from the document
     var recBtn = document.getElementById("rectangle-button");
     var squareBtn = document.getElementById("square-button");
     var cirBtn = document.getElementById("circle-button");
@@ -22,16 +32,30 @@ document.addEventListener("DOMContentLoaded", function () {
     var cirInfo = document.getElementById("circle-radius");
     var triInfo = document.getElementById("tri-height");
     //getting all outputs from the document
-    var shapeName = document.getElementById("shape-name").innerHTML;
-    var width = document.getElementById("width").innerHTML;
-    var height = document.getElementById("height").innerHTML;
-    var radius = document.getElementById("radius").innerHTML;
-    var area = document.getElementById("area").innerHTML;
-    var parameter = document.getElementById("parameter").innerHTML;
-    //getting shape container from the document
+    var shapeName = document.getElementById("shape-name");
+    var width = document.getElementById("width");
+    var height = document.getElementById("height");
+    var radius = document.getElementById("radius");
+    var area = document.getElementById("area");
+    var perimeter = document.getElementById("parameter");
+    //getting containers from the document
+    var sidePanel = document.getElementById("side-panel");
     var shapeContainer = document.getElementById("shape-container");
+    //creating the interface for a shape object
+    //it works without this but I am leaving the notation in case something breaks
+    //and as a future reference.
+    /*interface IShape {
+         shapeName: string;
+         width?: string;
+         height?: string;
+         radius?: string;
+         area?: string;
+         perimeter?: string;
+         draw(id):void;
+         describe():void;
+     }*/
     //creating a parent class of shape
-    var Shape = /** @class */ (function () {
+    var Shape /*implements IShape (interface not needed)*/ = /** @class */ (function () {
         function Shape(shapeName) {
             var _this = this;
             this.shapeName = shapeName;
@@ -39,13 +63,26 @@ document.addEventListener("DOMContentLoaded", function () {
             this.div.addEventListener("dblclick", function () {
                 shapeContainer.removeChild(_this.div);
             });
+            this.div.addEventListener("click", function () {
+                _this.describe();
+            });
         }
+        //draws shape in the shape-container
         Shape.prototype.draw = function (id) {
             shapeContainer.appendChild(this.div);
             this.div.id = id;
             var position = randomPosition();
             this.div.style.top = position.top + "px";
-            this.div.style.left = position.right + "px";
+            this.div.style.left = position.left + "px";
+        };
+        //appends shape information to the side-panel
+        Shape.prototype.describe = function () {
+            shapeName.innerHTML = "Shape Name: " + this.shapeName;
+            width.innerHTML = "Width: " + this.width;
+            height.innerHTML = "Height: " + this.height;
+            radius.innerHTML = "Radius: " + this.radius;
+            area.innerHTML = "Area: " + this.area;
+            perimeter.innerHTML = "Perimeter: " + this.perimeter;
         };
         return Shape;
     }());
@@ -57,29 +94,46 @@ document.addEventListener("DOMContentLoaded", function () {
             var length = squareInfo.value + "px";
             _this.div.style.width = length;
             _this.div.style.height = length;
+            _this.width = length;
+            _this.height = length;
+            _this.area = (Math.pow(Number(squareInfo.value), 2)).toFixed(2) + "px";
+            _this.perimeter = "" + (4 * Number(squareInfo.value)).toFixed(2);
             return _this;
         }
         return Square;
     }(Shape));
     squareBtn.addEventListener("click", function () {
-        var square = new Square;
-        square.draw("square");
+        if (squareInfo.value === "") {
+            alert("You must enter a value for side-length");
+        }
+        else {
+            var square = new Square;
+            square.draw("square");
+        }
     });
     //creating circle class
     var Circle = /** @class */ (function (_super) {
         __extends(Circle, _super);
         function Circle() {
             var _this = _super.call(this, "Circle") || this;
-            var radius = cirInfo.value + "px";
-            _this.div.style.width = radius;
-            _this.div.style.height = radius;
+            var diameter = Number(cirInfo.value) * 2 + "px";
+            _this.div.style.width = diameter;
+            _this.div.style.height = diameter;
+            _this.radius = Number(cirInfo.value) + "px";
+            _this.area = (Math.PI * (Math.pow(Number(cirInfo.value), 2))).toFixed(2) + "px";
+            _this.perimeter = (2 * Math.PI * Number(cirInfo.value)).toFixed(2) + "px";
             return _this;
         }
         return Circle;
     }(Shape));
     cirBtn.addEventListener("click", function () {
-        var circle = new Circle;
-        circle.draw("circle");
+        if (cirInfo.value === "") {
+            alert("You must enter a value for radius");
+        }
+        else {
+            var circle = new Circle;
+            circle.draw("circle");
+        }
     });
     //creating Rectangle class
     var Rectangle = /** @class */ (function (_super) {
@@ -88,20 +142,28 @@ document.addEventListener("DOMContentLoaded", function () {
             var _this = _super.call(this, "Rectangle") || this;
             var recHeight = recInfo1.value + "px";
             var recWidth = recInfo2.value + "px";
-            if (recHeight === recWidth) {
-                alert("that's a square dummy! This is a rectangle.");
-            }
-            else {
-                _this.div.style.height = recHeight;
-                _this.div.style.width = recWidth;
-            }
+            _this.height = recHeight;
+            _this.width = recWidth;
+            _this.area = (Number(recInfo1.value) * Number(recInfo2.value)).toFixed(2) + "px";
+            _this.perimeter = ((Number(recInfo1.value) + Number(recInfo2.value)) * 2).toFixed(2) + "px";
+            _this.div.style.height = recHeight;
+            _this.div.style.width = recWidth;
             return _this;
         }
         return Rectangle;
     }(Shape));
     recBtn.addEventListener("click", function () {
         var rectangle = new Rectangle;
-        rectangle.draw("rectangle");
+        if (recInfo1.value === "" || recInfo2.value === "") {
+            alert("You must enter a value for width and height");
+        }
+        else if (recInfo1.value === recInfo2.value) {
+            alert("That's a square! See, watch!");
+            rectangle.draw("square");
+        }
+        else {
+            rectangle.draw("rectangle");
+        }
     });
     //creating a triangle class
     var Triangle = /** @class */ (function (_super) {
@@ -109,28 +171,23 @@ document.addEventListener("DOMContentLoaded", function () {
         function Triangle() {
             var _this = _super.call(this, "Triangle") || this;
             var triHeight = triInfo.value + "px";
-            _this.div.style.borderTop = triHeight + " solid $triangle-color";
+            _this.div.style.borderTop = triHeight + " solid yellow";
             _this.div.style.borderLeft = triHeight + " solid transparent";
+            _this.div.style.height = "" + triHeight;
+            _this.height = triHeight;
+            _this.width = triHeight;
+            _this.area = 0.5 * Number(triInfo.value) * Number(triInfo.value) + "px";
             return _this;
         }
         return Triangle;
     }(Shape));
     triBtn.addEventListener("click", function () {
-        var tri = new Triangle;
-        tri.draw("triangle");
+        if (triInfo.value === "") {
+            alert("You must enter a value for height");
+        }
+        else {
+            var tri = new Triangle;
+            tri.draw("triangle");
+        }
     });
 });
-//function randomPosition(){
-//    let num=randomNum(500,1);
-//  let left= `${num}px`
-//let top= `${num}px`
-//}
-function randomNum(max, min) {
-    return Math.random() * (max - min) + min;
-}
-function randomPosition() {
-    return {
-        top: randomNum(500, 1),
-        right: randomNum(300, 1)
-    };
-}

@@ -5,6 +5,7 @@ body {
   background-size: cover; }
 
 .input-container {
+  position: relative;
   color: magenta;
   background-size: cover;
   border: solid lavenderblush thin;
@@ -32,6 +33,7 @@ body {
     margin: 0 20% auto; }
 
 .shape-container {
+  position: relative;
   color: magenta;
   background-size: cover;
   border: solid lavenderblush thin;
@@ -43,6 +45,7 @@ body {
   width: 50%; }
 
 .side-panel {
+  position: relative;
   color: magenta;
   background-size: cover;
   border: solid lavenderblush thin;
@@ -51,7 +54,8 @@ body {
   margin: 0 auto;
   padding: 0;
   background-image: url("images/input-background.jpeg");
-  width: 19.5%; }
+  width: 19.5%;
+  /*visibility: hidden;*/ }
   .side-panel .output {
     display: block;
     width: 80%;

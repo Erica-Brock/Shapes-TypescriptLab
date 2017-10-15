@@ -3,6 +3,7 @@
     padding:0;
 }
 @mixin container-styles{
+    position: relative;
     color:$text-color;
     background-size: cover;
     border:solid  $main-color thin;
