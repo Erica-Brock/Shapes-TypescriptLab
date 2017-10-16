@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //creating square class
     class Square extends Shape {
         width: string;
-        height: string;
+          height: string;
         area: string;
         perimeter: string;
         constructor() {

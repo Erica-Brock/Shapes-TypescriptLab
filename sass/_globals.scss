@@ -28,6 +28,7 @@ body{
     @include container-styles;
     background-image:url("images/container-background.png");
     width:50%;
+    overflow: hidden;
     
 
 }
@@ -35,7 +36,6 @@ body{
     @include container-styles;
     background-image:url("images/input-background.jpeg");
     width:19.5%;
-    /*visibility: hidden;*/
     .output{
         @include input-output;
         @include border;

@@ -42,7 +42,8 @@ body {
   margin: 0 auto;
   padding: 0;
   background-image: url("images/container-background.png");
-  width: 50%; }
+  width: 50%;
+  overflow: hidden; }
 
 .side-panel {
   position: relative;
@@ -54,8 +55,7 @@ body {
   margin: 0 auto;
   padding: 0;
   background-image: url("images/input-background.jpeg");
-  width: 19.5%;
-  /*visibility: hidden;*/ }
+  width: 19.5%; }
   .side-panel .output {
     display: block;
     width: 80%;
